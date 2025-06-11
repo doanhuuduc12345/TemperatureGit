@@ -47,6 +47,14 @@ WidgetLED LEDCONNECT(V0);
 #define BUTTON1_PIN 0 // GPIO0 (D3)
 #define BUTTON2_PIN 2 // GPIO2 (D4)
 
+<<<<<<< HEAD
+=======
+// Buzzer Configuration
+#define BUZZER_PIN 13 // D7 - GPIO13
+#define TEMP_THRESHOLD 35.0
+#define HUMIDITY_THRESHOLD 80.0
+
+>>>>>>> 8e6ff8d (temperature project)
 bool relay1State = false; // Trạng thái relay 1
 bool relay2State = false; // Trạng thái relay 2
 
@@ -66,6 +74,13 @@ void setup()
   pinMode(BUTTON1_PIN, INPUT_PULLUP);
   pinMode(BUTTON2_PIN, INPUT_PULLUP);
 
+<<<<<<< HEAD
+=======
+  // Buzzer configuration
+  pinMode(BUZZER_PIN, OUTPUT);
+  digitalWrite(BUZZER_PIN, LOW); // Tắt buzzer ban đầu
+
+>>>>>>> 8e6ff8d (temperature project)
   // OLED configuration
   if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
     Serial.println(F("OLED allocation failed"));
@@ -95,6 +110,15 @@ void loop() {
       temperature = t;
       humidity = h;
       showOled(temperature, humidity);
+<<<<<<< HEAD
+=======
+      // Buzzer cảnh báo nếu vượt ngưỡng
+      if (temperature > TEMP_THRESHOLD || humidity > HUMIDITY_THRESHOLD) {
+        digitalWrite(BUZZER_PIN, HIGH); // Bật buzzer
+      } else {
+        digitalWrite(BUZZER_PIN, LOW); // Tắt buzzer
+      }
+>>>>>>> 8e6ff8d (temperature project)
     }
     timeShowOled = millis();
   }
